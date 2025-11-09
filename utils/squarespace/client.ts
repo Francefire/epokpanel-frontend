@@ -38,6 +38,8 @@ export interface ProductImage {
 }
 
 export interface Product {
+  modifiedAt: string;
+  updatedAt: string;
   id: string;
   type: 'PHYSICAL' | 'DIGITAL';
   storePageId: string;
@@ -84,7 +86,7 @@ export interface ProductTemplate {
  * @param config - API configuration
  */
 export function createSquarespaceClient(config: SquarespaceConfig) {
-  const { apiKey, storeUrl } = config;
+  const { apiKey } = config;
   const baseApiUrl = `https://api.squarespace.com/v2`
 
   // Base API request helper
@@ -197,6 +199,7 @@ export function createSquarespaceClient(config: SquarespaceConfig) {
        */
       async create(product: Omit<Product, 'id'>): Promise<Product> {
         // TODO: Implement when Squarespace API is configured
+        console.log(product)
         throw new Error('Not implemented');
       },
 
@@ -213,7 +216,7 @@ export function createSquarespaceClient(config: SquarespaceConfig) {
        */
       async update(id: string, updates: Partial<Product>): Promise<Product> {
         // Filter out fields that cannot be updated via this endpoint
-        const { id: _id, variants, images, ...updateData } = updates;
+        const { ...updateData } = updates;
         
         try {
           return await apiRequest<Product>(
@@ -235,7 +238,7 @@ export function createSquarespaceClient(config: SquarespaceConfig) {
        * Delete a product
        */
       async delete(id: string): Promise<void> {
-        // TODO: Implement when Squarespace API is configured
+        console.log(id)
         throw new Error('Not implemented');
       },
 
@@ -264,6 +267,10 @@ export function createSquarespaceClient(config: SquarespaceConfig) {
       ): Promise<Product> {
         // TODO: Implement product creation with templates
         // This will require mapping template data to Squarespace API format
+        console.log(getTemplateDefaults("painting"));
+        console.log(getTemplateDefaults("sculpture"));
+
+        console.log(template, productData)
         throw new Error('Product creation from templates not yet implemented');
       },
     },

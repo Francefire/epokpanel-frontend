@@ -1,12 +1,13 @@
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Package, DollarSign, Eye, EyeOff, Edit3 } from "lucide-react";
-import { getSquarespaceClient } from "@/utils/squarespace/get-client";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import type { Product } from "@/utils/squarespace/client";
+import { getSquarespaceClient } from "@/utils/squarespace/get-client";
+import { createClient } from "@/utils/supabase/server";
+import { Edit3, Eye, EyeOff, Package, Plus } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 function formatPrice(value: string, currency: string = 'USD'): string {
   const amount = parseFloat(value);
@@ -43,7 +44,7 @@ function ProductCard({ product }: ProductCardProps) {
     <Card className="overflow-hidden hover:shadow-lg transition-shadow">
       <div className="aspect-square relative bg-muted">
         {mainImage ? (
-          <img
+          <Image
             src={mainImage.url}
             alt={mainImage.altText || product.name}
             className="object-cover w-full h-full"
@@ -188,7 +189,7 @@ export default async function ProductsPage() {
           <CardHeader>
             <CardTitle>No Products Found</CardTitle>
             <CardDescription>
-              Your Squarespace store doesn't have any products yet, or they haven't synced.
+              Your Squarespace store doesn&apos;t have any products yet, or they haven&apos;t synced.
             </CardDescription>
           </CardHeader>
           <CardContent>

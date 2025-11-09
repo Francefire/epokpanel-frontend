@@ -17,17 +17,10 @@ import {
 import type { Product } from "@/utils/squarespace/client";
 import { EditableCell } from "./editable-cell";
 import { EditableTags } from "./editable-tags";
-
-function formatPrice(value: string, currency: string = "USD"): string {
-  const amount = parseFloat(value);
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: currency,
-  }).format(amount);
-}
+import Image from "next/image";
 
 export function createProductColumns(
-  onUpdate: (id: string, field: string, value: any) => Promise<void>
+  onUpdate: (id: string, field: string, value: unknown) => Promise<void>
 ): ColumnDef<Product>[] {
   return [
     {
@@ -61,7 +54,7 @@ export function createProductColumns(
         return (
           <div className="w-12 h-12 rounded overflow-hidden bg-muted flex items-center justify-center">
             {image ? (
-              <img
+              <Image
                 src={image.url}
                 alt={image.altText || product.name}
                 className="object-cover w-full h-full"
@@ -137,8 +130,6 @@ export function createProductColumns(
         const price = mainVariant.pricing.onSale && mainVariant.pricing.salePrice
           ? mainVariant.pricing.salePrice
           : mainVariant.pricing.basePrice;
-        
-        const displayPrice = formatPrice(price.value, price.currency);
         
         return (
           <div className="flex flex-col gap-1">

@@ -22,7 +22,7 @@ export function BulkEditClient({ initialProducts }: BulkEditClientProps) {
   const [selectedProducts, setSelectedProducts] = React.useState<Product[]>([]);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
 
-  const handleUpdate = React.useCallback(async (id: string, field: string, value: any) => {
+  const handleUpdate = React.useCallback(async (id: string, field: string, value: unknown) => {
     try {
       const updatedProduct = await updateProduct(id, field, value);
       

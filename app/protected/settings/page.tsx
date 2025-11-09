@@ -14,7 +14,8 @@ export default async function SettingsPage() {
   }
 
   // Fetch existing API keys if any
-  const { apiKey, storeUrl } = await getApiKeys();
+  const { squareSpaceConfig } = await getApiKeys();
+  
 
   return (
     <div className="flex-1 w-full flex flex-col gap-8">
@@ -34,8 +35,8 @@ export default async function SettingsPage() {
         </CardHeader>
         <CardContent>
           <SettingsForm 
-            initialApiKey={apiKey || undefined} 
-            initialStoreUrl={storeUrl || undefined}
+            initialApiKey={squareSpaceConfig?.apiKey || undefined} 
+            initialStoreUrl={squareSpaceConfig?.storeUrl || undefined}
           />
         </CardContent>
       </Card>

@@ -3,7 +3,7 @@
 import type { Product } from "@/utils/squarespace/client";
 import { getSquarespaceClient } from "@/utils/squarespace/get-client";
 
-export async function updateProduct(id: string, field: string, value: any): Promise<Product | null> {
+export async function updateProduct(id: string, field: string, value: unknown): Promise<Product | null> {
   const client = await getSquarespaceClient();
   
   // Map field to API update structure
@@ -11,16 +11,16 @@ export async function updateProduct(id: string, field: string, value: any): Prom
   
   switch (field) {
     case "name":
-      updates.name = value;
+      updates.name = value as string;
       break;
     case "isVisible":
-      updates.isVisible = value;
+      updates.isVisible = value as boolean;
       break;
     case "tags":
-      updates.tags = value;
+      updates.tags = value as string[];
       break;
     case "categories":
-      updates.categories = value;
+      updates.categories = value as string[];
       break;
     case "price":
       // Note: Price updates require variant-specific API calls
@@ -126,8 +126,9 @@ export async function bulkUpdateTags(
       const products = await client.products.getMany(batch);
       products.forEach((p) => productsMap.set(p.id, p));
     }
-  } catch (error) {
+  } catch (error){
     // If batch fetch fails, fall back to individual fetches
+    console.log(error);
     await Promise.allSettled(
       productIds.map(async (id) => {
         const product = await client.products.get(id);
@@ -194,7 +195,8 @@ export async function bulkUpdateCategories(
       const products = await client.products.getMany(batch);
       products.forEach((p) => productsMap.set(p.id, p));
     }
-  } catch (error) {
+  } catch (error){
+    console.log(error);
     // If batch fetch fails, fall back to individual fetches
     await Promise.allSettled(
       productIds.map(async (id) => {

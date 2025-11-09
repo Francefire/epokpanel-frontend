@@ -64,7 +64,7 @@ export default async function BulkEditPage() {
           <CardHeader>
             <CardTitle>No Products Found</CardTitle>
             <CardDescription>
-              Your Squarespace store doesn't have any products to edit.
+              Your Squarespace store doesn&apos;t have any products to edit.
             </CardDescription>
           </CardHeader>
           <CardContent>

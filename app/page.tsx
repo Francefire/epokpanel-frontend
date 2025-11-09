@@ -44,7 +44,7 @@ export default function Home() {
               <Package className="h-12 w-12" />
               <h3 className="font-semibold text-lg">Product Management</h3>
               <p className="text-sm text-muted-foreground text-center">
-                Manage your Squarespace products with an intuitive interface that's
+                Manage your Squarespace products with an intuitive interface that&apos;s
                 faster than the native dashboard.
               </p>
             </div>

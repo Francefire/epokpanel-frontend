@@ -1,8 +1,8 @@
-import { redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { getSquarespaceClient } from "@/utils/squarespace/get-client";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Package, ShoppingCart, TrendingUp, AlertCircle } from "lucide-react";
+import { createClient } from "@/utils/supabase/server";
+import { AlertCircle, Package, ShoppingCart, TrendingUp } from "lucide-react";
+import { redirect } from "next/navigation";
 
 export default async function ProtectedPage() {
   const supabase = await createClient();
@@ -26,7 +26,6 @@ export default async function ProtectedPage() {
     const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     recentUpdates = products.filter(p => {
       // If product has a "updatedAt" or "modifiedAt" field, use it. Otherwise, fallback to none.
-      // @ts-ignore
       const updated = p.updatedAt || p.modifiedAt || null;
       return updated && new Date(updated) > sevenDaysAgo;
     }).length;
