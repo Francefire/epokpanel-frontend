@@ -1,0 +1,6 @@
+{
+  "schemaVersion": 2,
+  "dockerfileLines": [
+    "FROM ghcr.io/francefire/epokpanel-frontend:latest"
+  ]
+}
