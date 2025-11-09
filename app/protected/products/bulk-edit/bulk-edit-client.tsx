@@ -24,22 +24,14 @@ export function BulkEditClient({ initialProducts }: BulkEditClientProps) {
 
   const handleUpdate = React.useCallback(async (id: string, field: string, value: any) => {
     try {
-      await updateProduct(id, field, value);
+      const updatedProduct = await updateProduct(id, field, value);
       
-      // Optimistic update
-      setProducts((prev) =>
-        prev.map((p) => {
-          if (p.id === id) {
-            const updated = { ...p };
-            if (field === "name") updated.name = value;
-            if (field === "isVisible") updated.isVisible = value;
-            if (field === "tags") updated.tags = value;
-            if (field === "categories") updated.categories = value;
-            return updated;
-          }
-          return p;
-        })
-      );
+      if (updatedProduct) {
+        // Update with actual server data
+        setProducts((prev) =>
+          prev.map((p) => (p.id === id ? updatedProduct : p))
+        );
+      }
       
       toast.success("Product updated successfully");
     } catch (error) {
@@ -117,19 +109,22 @@ export function BulkEditClient({ initialProducts }: BulkEditClientProps) {
       const result = await bulkUpdateTags(ids, action, tags);
       
       if (result.success.length > 0) {
+        // Update products with actual data from server
+        setProducts((prev) => {
+          const updatedMap = new Map(result.updatedProducts.map(p => [p.id, p]));
+          return prev.map(p => updatedMap.get(p.id) || p);
+        });
         toast.success(`${result.success.length} product(s) tags updated`);
-        router.refresh();
       }
       
       if (result.failed.length > 0) {
-        console.log(result)
         toast.error(`Failed to update ${result.failed.length} product(s)`);
         for (const fail of result.failed) {
             toast.error(`Product ID ${fail.id} update failed: ${fail.error}`);
         }
       }
     },
-    [selectedProducts, router]
+    [selectedProducts]
   );
 
   const handleBulkCategoriesUpdate = React.useCallback(
@@ -138,8 +133,12 @@ export function BulkEditClient({ initialProducts }: BulkEditClientProps) {
       const result = await bulkUpdateCategories(ids, action, categories);
       
       if (result.success.length > 0) {
+        // Update products with actual data from server
+        setProducts((prev) => {
+          const updatedMap = new Map(result.updatedProducts.map(p => [p.id, p]));
+          return prev.map(p => updatedMap.get(p.id) || p);
+        });
         toast.success(`${result.success.length} product(s) categories updated`);
-        router.refresh();
       }
       
       if (result.failed.length > 0) {
@@ -149,7 +148,7 @@ export function BulkEditClient({ initialProducts }: BulkEditClientProps) {
         }
       }
     },
-    [selectedProducts, router]
+    [selectedProducts]
   );
 
   const handleRefresh = React.useCallback(() => {

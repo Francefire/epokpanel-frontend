@@ -3,7 +3,7 @@
 import type { Product } from "@/utils/squarespace/client";
 import { getSquarespaceClient } from "@/utils/squarespace/get-client";
 
-export async function updateProduct(id: string, field: string, value: any): Promise<void> {
+export async function updateProduct(id: string, field: string, value: any): Promise<Product | null> {
   const client = await getSquarespaceClient();
   
   // Map field to API update structure
@@ -36,8 +36,11 @@ export async function updateProduct(id: string, field: string, value: any): Prom
   }
   
   if (Object.keys(updates).length > 0) {
-    await client.products.update(id, updates);
+    const updatedProduct = await client.products.update(id, updates);
+    return updatedProduct;
   }
+  
+  return null;
 }
 
 export async function bulkUpdateVisibility(
@@ -105,8 +108,8 @@ export async function bulkUpdateTags(
   productIds: string[],
   action: "add" | "remove",
   tags: string[]
-): Promise<{ success: string[]; failed: Array<{ id: string; error: string }> }> {
-  const results = { success: [] as string[], failed: [] as Array<{ id: string; error: string }> };
+): Promise<{ success: string[]; failed: Array<{ id: string; error: string }>; updatedProducts: Product[] }> {
+  const results = { success: [] as string[], failed: [] as Array<{ id: string; error: string }>, updatedProducts: [] as Product[] };
   
   const client = await getSquarespaceClient();
   
@@ -152,6 +155,10 @@ export async function bulkUpdateTags(
         }
         
         await updateProduct(id, "tags", newTags);
+        
+        // Store updated product
+        const updatedProduct = { ...product, tags: newTags };
+        results.updatedProducts.push(updatedProduct);
         results.success.push(id);
       } catch (error) {
         results.failed.push({
@@ -169,8 +176,8 @@ export async function bulkUpdateCategories(
   productIds: string[],
   action: "add" | "remove",
   categories: string[]
-): Promise<{ success: string[]; failed: Array<{ id: string; error: string }> }> {
-  const results = { success: [] as string[], failed: [] as Array<{ id: string; error: string }> };
+): Promise<{ success: string[]; failed: Array<{ id: string; error: string }>; updatedProducts: Product[] }> {
+  const results = { success: [] as string[], failed: [] as Array<{ id: string; error: string }>, updatedProducts: [] as Product[] };
   
   const client = await getSquarespaceClient();
   
@@ -216,6 +223,10 @@ export async function bulkUpdateCategories(
         }
         
         await updateProduct(id, "categories", newCategories);
+        
+        // Store updated product
+        const updatedProduct = { ...product, categories: newCategories };
+        results.updatedProducts.push(updatedProduct);
         results.success.push(id);
       } catch (error) {
         results.failed.push({
