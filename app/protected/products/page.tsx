@@ -3,7 +3,7 @@ import { createClient } from "@/utils/supabase/server";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Plus, Package, DollarSign, Eye, EyeOff } from "lucide-react";
+import { Plus, Package, DollarSign, Eye, EyeOff, Edit3 } from "lucide-react";
 import { getSquarespaceClient } from "@/utils/squarespace/get-client";
 import type { Product } from "@/utils/squarespace/client";
 import Link from "next/link";
@@ -152,10 +152,18 @@ export default async function ProductsPage() {
             Manage your Squarespace products and inventory
           </p>
         </div>
-        <Button>
-          <Plus className="h-4 w-4 mr-2" />
-          Add Product
-        </Button>
+        <div className="flex gap-2">
+          <Button variant="outline" asChild>
+            <Link href="/protected/products/bulk-edit">
+              <Edit3 className="h-4 w-4 mr-2" />
+              Bulk Edit
+            </Link>
+          </Button>
+          <Button>
+            <Plus className="h-4 w-4 mr-2" />
+            Add Product
+          </Button>
+        </div>
       </div>
 
       {apiError ? (

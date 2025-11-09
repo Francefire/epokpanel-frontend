@@ -48,6 +48,8 @@ export interface Product {
   variants: ProductVariant[];
   images: ProductImage[];
   isVisible: boolean;
+  tags?: string[];
+  categories?: string[];
   seoOptions?: {
     title?: string;
     description?: string;
@@ -154,10 +156,40 @@ export function createSquarespaceClient(config: SquarespaceConfig) {
 
       /**
        * Get a single product by ID
+       * @param id - Product ID
+       * @returns Product or null if not found
+       * @throws {Error} 404 - Product not found
        */
       async get(id: string): Promise<Product | null> {
-        // TODO: Implement when Squarespace API is configured
-        return null;
+        try {
+          const response = await apiRequest<{ products: Product[] }>(
+            `commerce/products/${id}`
+          );
+          return response.products[0] || null;
+        } catch (error) {
+          if (error instanceof Error && error.message.includes('404')) {
+            return null;
+          }
+          throw error;
+        }
+      },
+
+      /**
+       * Get multiple products by IDs (up to 50)
+       * @param ids - Array of product IDs (max 50)
+       * @returns Array of products
+       * @throws {Error} 400 - More than 50 IDs requested
+       * @throws {Error} 404 - One or more IDs not found
+       */
+      async getMany(ids: string[]): Promise<Product[]> {
+        if (ids.length > 50) {
+          throw new Error('Cannot retrieve more than 50 products at once');
+        }
+        
+        const response = await apiRequest<{ products: Product[] }>(
+          `commerce/products/${ids.join(',')}`
+        );
+        return response.products;
       },
 
       /**
@@ -170,10 +202,33 @@ export function createSquarespaceClient(config: SquarespaceConfig) {
 
       /**
        * Update an existing product
+       * Note: Cannot add/remove images or update variants via this endpoint
+       * @param id - Product ID
+       * @param updates - Partial product data to update
+       * @returns Updated product
+       * @throws {Error} 400 - Invalid request body
+       * @throws {Error} 404 - Product not found
+       * @throws {Error} 405 - Not a PHYSICAL product
+       * @throws {Error} 409 - Conflict (e.g., URL slug in use)
        */
       async update(id: string, updates: Partial<Product>): Promise<Product> {
-        // TODO: Implement when Squarespace API is configured
-        throw new Error('Not implemented');
+        // Filter out fields that cannot be updated via this endpoint
+        const { id: _id, variants, images, ...updateData } = updates;
+        
+        try {
+          return await apiRequest<Product>(
+            `commerce/products/${id}`,
+            {
+              method: 'POST',
+              body: JSON.stringify(updateData),
+            }
+          );
+        } catch (error) {
+          if (error instanceof Error) {
+            throw new Error(`Failed to update product ${id}: ${error.message}`);
+          }
+          throw error;
+        }
       },
 
       /**
@@ -186,10 +241,14 @@ export function createSquarespaceClient(config: SquarespaceConfig) {
 
       /**
        * Bulk update multiple products
+       * @param updates - Array of product IDs and their update data
+       * @returns Promise that resolves when all updates complete
        */
       async bulkUpdate(updates: Array<{ id: string; data: Partial<Product> }>): Promise<void> {
-        // TODO: Implement when Squarespace API is configured
-        throw new Error('Not implemented');
+        // Execute all updates in parallel
+        await Promise.all(
+          updates.map(({ id, data }) => this.update(id, data))
+        );
       },
     },
 
