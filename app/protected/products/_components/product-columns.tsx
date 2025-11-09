@@ -58,6 +58,8 @@ export function createProductColumns(
                 src={image.url}
                 alt={image.altText || product.name}
                 className="object-cover w-full h-full"
+                width={250}
+                height={250}
               />
             ) : (
               <Package className="h-6 w-6 text-muted-foreground/50" />

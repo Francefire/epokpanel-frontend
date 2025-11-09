@@ -48,6 +48,8 @@ function ProductCard({ product }: ProductCardProps) {
             src={mainImage.url}
             alt={mainImage.altText || product.name}
             className="object-cover w-full h-full"
+            width={512}
+            height={512}
           />
         ) : (
           <div className="flex items-center justify-center h-full">
