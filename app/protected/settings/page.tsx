@@ -4,9 +4,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { SettingsForm } from "@/components/settings-form";
 import { getApiKeys } from "@/utils/api-keys";
+import { getTranslations } from 'next-intl/server';
 
 export default async function SettingsPage() {
   const supabase = await createClient();
+  const t = await getTranslations();
 
   const { data, error } = await supabase.auth.getClaims();
   if (error || !data?.claims) {
@@ -20,17 +22,17 @@ export default async function SettingsPage() {
   return (
     <div className="flex-1 w-full flex flex-col gap-8">
       <div>
-        <h1 className="text-3xl font-bold mb-2">Settings</h1>
+        <h1 className="text-3xl font-bold mb-2">{t('settings.title')}</h1>
         <p className="text-muted-foreground">
-          Configure your Squarespace API and application preferences
+          {t('settings.subtitle')}
         </p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Squarespace API Configuration</CardTitle>
+          <CardTitle>{t('settings.apiConfiguration.title')}</CardTitle>
           <CardDescription>
-            Connect your Squarespace store to enable product management
+            {t('settings.apiConfiguration.description')}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -43,9 +45,9 @@ export default async function SettingsPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Product Templates</CardTitle>
+          <CardTitle>{t('settings.templateSettings.title')}</CardTitle>
           <CardDescription>
-            Configure default settings for product templates
+            {t('settings.templateSettings.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">

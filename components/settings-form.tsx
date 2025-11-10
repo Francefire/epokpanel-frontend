@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { saveApiKeysAction } from "@/app/protected/settings/actions";
+import { useTranslations } from 'next-intl';
 
 interface SettingsFormProps {
   initialApiKey?: string;
@@ -14,6 +15,7 @@ interface SettingsFormProps {
 export function SettingsForm({ initialApiKey, initialStoreUrl }: SettingsFormProps) {
   const [isPending, startTransition] = useTransition();
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const t = useTranslations('settings.apiConfiguration');
 
   const handleSubmit = async (formData: FormData) => {
     setMessage(null);
@@ -24,12 +26,12 @@ export function SettingsForm({ initialApiKey, initialStoreUrl }: SettingsFormPro
       if (result.success) {
         setMessage({
           type: "success",
-          text: "API configuration saved successfully!",
+          text: t('successMessage'),
         });
       } else {
         setMessage({
           type: "error",
-          text: result.error || "Failed to save configuration",
+          text: result.error || t('errorMessage'),
         });
       }
     });
@@ -38,24 +40,24 @@ export function SettingsForm({ initialApiKey, initialStoreUrl }: SettingsFormPro
   return (
     <form action={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="apiKey">API Key</Label>
+        <Label htmlFor="apiKey">{t('apiKey')}</Label>
         <Input
           id="apiKey"
           name="apiKey"
           type="password"
-          placeholder="Enter your Squarespace API key"
+          placeholder={t('apiKeyPlaceholder')}
           defaultValue={initialApiKey}
           required
           disabled={isPending}
         />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="storeUrl">Store URL</Label>
+        <Label htmlFor="storeUrl">{t('storeUrl')}</Label>
         <Input
           id="storeUrl"
           name="storeUrl"
           type="url"
-          placeholder="https://yourstore.squarespace.com"
+          placeholder={t('storeUrlPlaceholder')}
           defaultValue={initialStoreUrl}
           required
           disabled={isPending}
@@ -75,7 +77,7 @@ export function SettingsForm({ initialApiKey, initialStoreUrl }: SettingsFormPro
       )}
       
       <Button type="submit" disabled={isPending}>
-        {isPending ? "Saving..." : "Save Configuration"}
+        {isPending ? t('saving') : t('saveButton')}
       </Button>
     </form>
   );

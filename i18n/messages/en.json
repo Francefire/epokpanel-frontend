@@ -1,0 +1,180 @@
+{
+  "common": {
+    "epokPanel": "EPOKPanel",
+    "copyright": "© 2025 EPOKPanel. All rights reserved.",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "close": "Close",
+    "confirm": "Confirm",
+    "email": "Email",
+    "password": "Password"
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "products": "Products",
+    "settings": "Settings",
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "logout": "Logout"
+  },
+  "home": {
+    "title": "Epok Panel",
+    "subtitle": "Streamline your Squarespace shop management with powerful bulk editing, template-based product creation, and intuitive workflows.",
+    "getStarted": "Get Started",
+    "signUp": "Sign Up",
+    "features": {
+      "productManagement": {
+        "title": "Product Management",
+        "description": "Manage your Squarespace products with an intuitive interface that's faster than the native dashboard."
+      },
+      "templateBased": {
+        "title": "Template-Based Creation",
+        "description": "Create products from templates (paintings, sculptures) with auto-configured categories, tags, and stock."
+      },
+      "bulkOperations": {
+        "title": "Bulk Operations",
+        "description": "Edit multiple products simultaneously to save time and streamline your workflow."
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Login",
+      "subtitle": "Enter your email below to login to your account",
+      "emailPlaceholder": "m@example.com",
+      "forgotPassword": "Forgot your password?",
+      "loggingIn": "Logging in...",
+      "loginButton": "Login",
+      "noAccount": "Don't have an account?",
+      "signUpLink": "Sign up"
+    },
+    "signUp": {
+      "title": "Sign up",
+      "subtitle": "Create a new account",
+      "emailPlaceholder": "m@example.com",
+      "repeatPassword": "Repeat Password",
+      "passwordMismatch": "Passwords do not match",
+      "creatingAccount": "Creating an account...",
+      "signUpButton": "Sign up",
+      "hasAccount": "Already have an account?",
+      "loginLink": "Login"
+    },
+    "forgotPassword": {
+      "title": "Reset Your Password",
+      "subtitle": "Type in your email and we'll send you a link to reset your password",
+      "sending": "Sending...",
+      "sendButton": "Send reset email",
+      "successTitle": "Check Your Email",
+      "successSubtitle": "Password reset instructions sent",
+      "successMessage": "If you registered using your email and password, you will receive a password reset email.",
+      "hasAccount": "Already have an account?"
+    },
+    "updatePassword": {
+      "title": "Update Password",
+      "subtitle": "Enter your new password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm Password",
+      "updating": "Updating...",
+      "updateButton": "Update Password",
+      "passwordMismatch": "Passwords do not match",
+      "successMessage": "Password updated successfully!"
+    },
+    "greeting": "Hey, {email}!"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Welcome to your Epok Panel dashboard. Manage your Squarespace products efficiently.",
+    "cards": {
+      "totalProducts": {
+        "title": "Total Products",
+        "description": "Total products in store",
+        "notConnected": "Connect Squarespace to view",
+        "apiError": "API error"
+      },
+      "activeItems": {
+        "title": "Active Items",
+        "description": "In stock products",
+        "notConnected": "Connect Squarespace to view",
+        "apiError": "API error"
+      },
+      "recentUpdates": {
+        "title": "Recent Updates",
+        "description": "Last 7 days",
+        "notConnected": "Connect Squarespace to view",
+        "apiError": "API error"
+      },
+      "apiStatus": {
+        "title": "API Status",
+        "connected": "Connected",
+        "notConnected": "Not Connected",
+        "error": "Error",
+        "connectedDesc": "Squarespace API connected",
+        "notConnectedDesc": "Configure API credentials",
+        "errorDesc": "API error"
+      }
+    }
+  },
+  "products": {
+    "title": "Products",
+    "subtitle": "Manage your Squarespace products and inventory",
+    "bulkEdit": "Bulk Edit",
+    "addProduct": "Add Product",
+    "visible": "Visible",
+    "hidden": "Hidden",
+    "sale": "Sale",
+    "variants": "{count} variants",
+    "variant": "1 variant",
+    "stock": "Stock: {quantity}",
+    "unlimitedStock": "Unlimited stock",
+    "viewStore": "View Store",
+    "edit": "Edit",
+    "noDescription": "No description",
+    "errorLoading": "Error Loading Products",
+    "checkSettings": "Please check your Squarespace API configuration in settings.",
+    "goToSettings": "Go to Settings",
+    "noProducts": "No Products Found",
+    "noProductsDesc": "Your Squarespace store doesn't have any products yet, or they haven't synced.",
+    "noProductsMessage": "No products to display. Add products to your Squarespace store to get started.",
+    "checkApiSettings": "Check API Settings",
+    "showing": "Showing {count} product",
+    "showingPlural": "Showing {count} products",
+    "filter": "Filter",
+    "sort": "Sort"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "Configure your Squarespace API credentials",
+    "apiConfiguration": {
+      "title": "API Configuration",
+      "description": "Enter your Squarespace API credentials to enable product management",
+      "apiKey": "API Key",
+      "apiKeyPlaceholder": "Enter your Squarespace API key",
+      "storeUrl": "Store URL",
+      "storeUrlPlaceholder": "https://yourstore.squarespace.com",
+      "saving": "Saving...",
+      "saveButton": "Save Configuration",
+      "successMessage": "API configuration saved successfully!",
+      "errorMessage": "Failed to save configuration"
+    },
+    "templateSettings": {
+      "title": "Template Settings",
+      "description": "Configure default settings for product templates",
+      "comingSoon": "Coming soon"
+    }
+  },
+  "envVarWarning": {
+    "message": "Supabase environment variables required",
+    "signIn": "Sign In",
+    "signUp": "Sign Up"
+  },
+  "themeSwitcher": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}

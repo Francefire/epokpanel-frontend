@@ -1,18 +1,20 @@
+import { getTranslations } from "next-intl/server";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
-export function EnvVarWarning() {
+export async function EnvVarWarning() {
+  const t = await getTranslations();
   return (
     <div className="flex gap-4 items-center">
       <Badge variant={"outline"} className="font-normal">
-        Supabase environment variables required
+        {t('envVarWarning.message')}
       </Badge>
       <div className="flex gap-2">
         <Button size="sm" variant={"outline"} disabled>
-          Sign in
+          {t('envVarWarning.signIn')}
         </Button>
         <Button size="sm" variant={"default"} disabled>
-          Sign up
+          {t('envVarWarning.signUp')}
         </Button>
       </div>
     </div>

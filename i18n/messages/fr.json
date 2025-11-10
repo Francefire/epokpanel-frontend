@@ -1,0 +1,187 @@
+{
+  "common": {
+    "epokPanel": "EPOKPanel",
+    "copyright": "© 2025 EPOKPanel. Tous droits réservés.",
+    "loading": "Chargement...",
+    "error": "Erreur",
+    "success": "Succès",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "close": "Fermer",
+    "confirm": "Confirmer",
+    "email": "E-mail",
+    "password": "Mot de passe"
+  },
+  "nav": {
+    "dashboard": "Tableau de bord",
+    "products": "Produits",
+    "settings": "Paramètres",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire",
+    "logout": "Déconnexion"
+  },
+  "home": {
+    "title": "Panneau Epok",
+    "subtitle": "Rationalisez la gestion de votre boutique Squarespace avec des outils d'édition en masse puissants, la création de produits basée sur des modèles et des flux de travail intuitifs.",
+    "getStarted": "Commencer",
+    "signUp": "S'inscrire",
+    "features": {
+      "productManagement": {
+        "title": "Gestion des produits",
+        "description": "Gérez vos produits Squarespace avec une interface intuitive plus rapide que le tableau de bord natif."
+      },
+      "templateBased": {
+        "title": "Création basée sur des modèles",
+        "description": "Créez des produits à partir de modèles (peintures, sculptures) avec des catégories, des tags et un stock configurés automatiquement."
+      },
+      "bulkOperations": {
+        "title": "Opérations en masse",
+        "description": "Modifiez plusieurs produits simultanément pour gagner du temps et rationaliser votre flux de travail."
+      }
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "Connexion",
+      "subtitle": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte",
+      "emailPlaceholder": "m@exemple.com",
+      "forgotPassword": "Mot de passe oublié ?",
+      "loggingIn": "Connexion en cours...",
+      "loginButton": "Se connecter",
+      "noAccount": "Vous n'avez pas de compte ?",
+      "signUpLink": "S'inscrire"
+    },
+    "signUp": {
+      "title": "Inscription",
+      "subtitle": "Créer un nouveau compte",
+      "emailPlaceholder": "m@exemple.com",
+      "repeatPassword": "Répéter le mot de passe",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "creatingAccount": "Création du compte...",
+      "signUpButton": "S'inscrire",
+      "hasAccount": "Vous avez déjà un compte ?",
+      "loginLink": "Se connecter"
+    },
+    "forgotPassword": {
+      "title": "Réinitialiser votre mot de passe",
+      "subtitle": "Entrez votre e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe",
+      "sending": "Envoi en cours...",
+      "sendButton": "Envoyer l'e-mail de réinitialisation",
+      "successTitle": "Vérifiez votre e-mail",
+      "successSubtitle": "Instructions de réinitialisation du mot de passe envoyées",
+      "successMessage": "Si vous vous êtes inscrit avec votre e-mail et votre mot de passe, vous recevrez un e-mail de réinitialisation du mot de passe.",
+      "hasAccount": "Vous avez déjà un compte ?"
+    },
+    "updatePassword": {
+      "title": "Mettre à jour le mot de passe",
+      "subtitle": "Entrez votre nouveau mot de passe",
+      "newPassword": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "updating": "Mise à jour...",
+      "updateButton": "Mettre à jour le mot de passe",
+      "passwordMismatch": "Les mots de passe ne correspondent pas",
+      "successMessage": "Mot de passe mis à jour avec succès !"
+    },
+    "greeting": "Bonjour, {email} !"
+  },
+  "dashboard": {
+    "title": "Tableau de bord",
+    "subtitle": "Bienvenue sur votre tableau de bord Panneau Epok. Gérez vos produits Squarespace efficacement.",
+    "cards": {
+      "totalProducts": {
+        "title": "Produits totaux",
+        "description": "Total de produits en boutique",
+        "notConnected": "Connectez Squarespace pour voir",
+        "apiError": "Erreur API"
+      },
+      "activeItems": {
+        "title": "Articles actifs",
+        "description": "Produits en stock",
+        "notConnected": "Connectez Squarespace pour voir",
+        "apiError": "Erreur API"
+      },
+      "recentUpdates": {
+        "title": "Mises à jour récentes",
+        "description": "7 derniers jours",
+        "notConnected": "Connectez Squarespace pour voir",
+        "apiError": "Erreur API"
+      },
+      "apiStatus": {
+        "title": "Statut API",
+        "connected": "Connecté",
+        "notConnected": "Non connecté",
+        "error": "Erreur",
+        "connectedDesc": "API Squarespace connectée",
+        "notConnectedDesc": "Configurer les identifiants API",
+        "errorDesc": "Erreur API"
+      }
+    }
+  },
+  "products": {
+    "title": "Produits",
+    "subtitle": "Gérez vos produits et votre inventaire Squarespace",
+    "bulkEdit": "Édition en masse",
+    "addProduct": "Ajouter un produit",
+    "visible": "Visible",
+    "hidden": "Caché",
+    "sale": "Promo",
+    "variants": "{count} variantes",
+    "variant": "1 variante",
+    "stock": "Stock : {quantity}",
+    "unlimitedStock": "Stock illimité",
+    "viewStore": "Voir la boutique",
+    "edit": "Modifier",
+    "noDescription": "Aucune description",
+    "errorLoading": "Erreur de chargement des produits",
+    "checkSettings": "Veuillez vérifier la configuration de votre API Squarespace dans les paramètres.",
+    "goToSettings": "Aller aux paramètres",
+    "noProducts": "Aucun produit trouvé",
+    "noProductsDesc": "Votre boutique Squarespace n'a pas encore de produits, ou ils n'ont pas été synchronisés.",
+    "noProductsMessage": "Aucun produit à afficher. Ajoutez des produits à votre boutique Squarespace pour commencer.",
+    "checkApiSettings": "Vérifier les paramètres API",
+    "showing": "Affichage de {count} produit",
+    "showingPlural": "Affichage de {count} produits",
+    "filter": "Filtrer",
+    "sort": "Trier",
+    "selected": "sélectionné",
+    "selectedPlural": "sélectionnés",
+    "product" : "produit",
+    "clearSelection": "Effacer la sélection",
+    "adjustPrices": "Ajuster les prix",
+    "manageTags": "Gérer les tags",
+    "manageCategories": "Gérer les catégories"
+  },
+  "settings": {
+    "title": "Paramètres",
+    "subtitle": "Configurez vos identifiants API Squarespace",
+    "apiConfiguration": {
+      "title": "Configuration API",
+      "description": "Entrez vos identifiants API Squarespace pour activer la gestion des produits",
+      "apiKey": "Clé API",
+      "apiKeyPlaceholder": "Entrez votre clé API Squarespace",
+      "storeUrl": "URL de la boutique",
+      "storeUrlPlaceholder": "https://votreboutique.squarespace.com",
+      "saving": "Enregistrement...",
+      "saveButton": "Enregistrer la configuration",
+      "successMessage": "Configuration API enregistrée avec succès !",
+      "errorMessage": "Échec de l'enregistrement de la configuration"
+    },
+    "templateSettings": {
+      "title": "Paramètres des modèles",
+      "description": "Configurez les paramètres par défaut pour les modèles de produits",
+      "comingSoon": "Bientôt disponible"
+    }
+  },
+  "envVarWarning": {
+    "message": "Variables d'environnement Supabase requises",
+    "signIn": "Se connecter",
+    "signUp": "S'inscrire"
+  },
+  "themeSwitcher": {
+    "light": "Clair",
+    "dark": "Sombre",
+    "system": "Système"
+  }
+}

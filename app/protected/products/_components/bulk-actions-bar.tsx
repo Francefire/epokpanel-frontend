@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import type { Product } from "@/utils/squarespace/client";
+import { useTranslations } from "next-intl";
 
 interface BulkActionsBarProps {
   selectedProducts: Product[];
@@ -47,6 +48,8 @@ export function BulkActionsBar({
   const [categoryInput, setCategoryInput] = React.useState("");
   const [categories, setCategories] = React.useState<string[]>([]);
   const [isProcessing, setIsProcessing] = React.useState(false);
+
+  const t = useTranslations();
 
   if (selectedProducts.length === 0) return null;
 
@@ -139,7 +142,7 @@ export function BulkActionsBar({
       <div className="flex items-center justify-between bg-primary/10 px-4 py-3 rounded-lg border border-primary/20">
         <div className="flex items-center gap-2">
           <span className="font-medium text-sm">
-            {selectedProducts.length} product{selectedProducts.length !== 1 ? "s" : ""} selected
+            {selectedProducts.length} {t("products.product").toLowerCase()}{selectedProducts.length !== 1 ? "s" : ""} {selectedProducts.length !== 1 ? t("products.selectedPlural") : t("products.selected")}
           </span>
           <Button
             variant="ghost"
@@ -147,7 +150,7 @@ export function BulkActionsBar({
             onClick={onClearSelection}
             disabled={isProcessing}
           >
-            Clear
+            {t("products.clearSelection")}
           </Button>
         </div>
         
@@ -158,8 +161,8 @@ export function BulkActionsBar({
             onClick={() => handleVisibilityUpdate(true)}
             disabled={isProcessing}
           >
-            <Eye className="h-4 w-4 mr-2" />
-            Make Visible
+            <Eye className="h-4 w-4" />
+            {t("products.visible")}
           </Button>
           
           <Button
@@ -168,8 +171,8 @@ export function BulkActionsBar({
             onClick={() => handleVisibilityUpdate(false)}
             disabled={isProcessing}
           >
-            <EyeOff className="h-4 w-4 mr-2" />
-            Hide
+            <EyeOff className="h-4 w-4" />
+            {t("products.hidden")}
           </Button>
           
           <Button
@@ -178,8 +181,8 @@ export function BulkActionsBar({
             onClick={() => setShowPriceDialog(true)}
             disabled={isProcessing}
           >
-            <DollarSign className="h-4 w-4 mr-2" />
-            Adjust Prices
+            <DollarSign className="h-4 w-4" />
+            {t("products.adjustPrices")}
           </Button>
           
           <Button
@@ -188,8 +191,8 @@ export function BulkActionsBar({
             onClick={() => setShowTagsDialog(true)}
             disabled={isProcessing}
           >
-            <Tag className="h-4 w-4 mr-2" />
-            Manage Tags
+            <Tag className="h-4 w-4" />
+            {t("products.manageTags")}
           </Button>
           
           <Button
@@ -198,8 +201,8 @@ export function BulkActionsBar({
             onClick={() => setShowCategoriesDialog(true)}
             disabled={isProcessing}
           >
-            <FolderTree className="h-4 w-4 mr-2" />
-            Manage Categories
+            <FolderTree className="h-4 w-4" />
+            {t("products.manageCategories")}
           </Button>
           
           <Button
@@ -208,8 +211,8 @@ export function BulkActionsBar({
             onClick={() => setShowDeleteDialog(true)}
             disabled={isProcessing}
           >
-            <Trash2 className="h-4 w-4 mr-2" />
-            Delete
+            <Trash2 className="h-4 w-4" />
+            {t("common.delete")}
           </Button>
         </div>
       </div>
