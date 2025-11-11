@@ -12,7 +12,8 @@
     "close": "Close",
     "confirm": "Confirm",
     "email": "Email",
-    "password": "Password"
+    "password": "Password",
+    "generalError": "An error occured."
   },
   "nav": {
     "dashboard": "Dashboard",
@@ -51,7 +52,8 @@
       "loggingIn": "Logging in...",
       "loginButton": "Login",
       "noAccount": "Don't have an account?",
-      "signUpLink": "Sign up"
+      "signUpLink": "Sign up",
+      "loginLink": "Login"
     },
     "signUp": {
       "title": "Sign up",
@@ -84,7 +86,12 @@
       "passwordMismatch": "Passwords do not match",
       "successMessage": "Password updated successfully!"
     },
-    "greeting": "Hey, {email}!"
+    "greeting": "Hey, {email}!",
+    "error": {
+      "title": "Authentication Error",
+      "code": "Error Code",
+      "unspecified": "An unspecified error occurred. Please try again."
+    }
   },
   "dashboard": {
     "title": "Dashboard",
@@ -144,7 +151,8 @@
     "showing": "Showing {count} product",
     "showingPlural": "Showing {count} products",
     "filter": "Filter",
-    "sort": "Sort"
+    "sort": "Sort",
+    "adjustPrices": "Adjust prices"
   },
   "settings": {
     "title": "Settings",

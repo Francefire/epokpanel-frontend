@@ -27,7 +27,7 @@ export function SignUpForm({
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const t = useTranslations('auth.signUp');
+  const t = useTranslations();
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ export function SignUpForm({
     setError(null);
 
     if (password !== repeatPassword) {
-      setError(t('passwordMismatch'));
+      setError(t('auth.signUp.passwordMismatch'));
       setIsLoading(false);
       return;
     }
@@ -52,7 +52,7 @@ export function SignUpForm({
       if (error) throw error;
       router.push("/auth/sign-up-success");
     } catch (error: unknown) {
-      setError(error instanceof Error ? error.message : "An error occurred");
+      setError(error instanceof Error ? error.message : t('common.generalError'));
     } finally {
       setIsLoading(false);
     }
@@ -62,8 +62,8 @@ export function SignUpForm({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">{t('title')}</CardTitle>
-          <CardDescription>{t('subtitle')}</CardDescription>
+          <CardTitle className="text-2xl">{t('auth.signUp.title')}</CardTitle>
+          <CardDescription>{t('auth.signUp.subtitle')}</CardDescription>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSignUp}>
@@ -73,7 +73,7 @@ export function SignUpForm({
                 <Input
                   id="email"
                   type="email"
-                  placeholder={t('emailPlaceholder')}
+                  placeholder={t('auth.signUp.emailPlaceholder')}
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -93,7 +93,7 @@ export function SignUpForm({
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
-                  <Label htmlFor="repeat-password">{t('repeatPassword')}</Label>
+                  <Label htmlFor="repeat-password">{t('auth.signUp.repeatPassword')}</Label>
                 </div>
                 <Input
                   id="repeat-password"
@@ -105,13 +105,13 @@ export function SignUpForm({
               </div>
               {error && <p className="text-sm text-red-500">{error}</p>}
               <Button type="submit" className="w-full" disabled={isLoading}>
-                {isLoading ? t('creatingAccount') : t('signUpButton')}
+                {isLoading ? t('auth.signUp.creatingAccount') : t('auth.signUp.signUpButton')}
               </Button>
             </div>
             <div className="mt-4 text-center text-sm">
-              {t('hasAccount')}{" "}
+              {t('auth.signUp.hasAccount')}{" "}
               <Link href="/auth/login" className="underline underline-offset-4">
-                {t('loginLink')}
+                {t('auth.signUp.loginLink')}
               </Link>
             </div>
           </form>

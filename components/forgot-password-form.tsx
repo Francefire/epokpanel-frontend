@@ -24,7 +24,7 @@ export function ForgotPasswordForm({
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const t = useTranslations('auth.forgotPassword');
+  const t = useTranslations();
 
   const handleForgotPassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,21 +51,21 @@ export function ForgotPasswordForm({
       {success ? (
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">{t('successTitle')}</CardTitle>
-            <CardDescription>{t('successSubtitle')}</CardDescription>
+            <CardTitle className="text-2xl">{t('auth.forgotPassword.successTitle')}</CardTitle>
+            <CardDescription>{t('auth.forgotPassword.successSubtitle')}</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-sm text-muted-foreground">
-              {t('successMessage')}
+              {t('auth.forgotPassword.successMessage')}
             </p>
           </CardContent>
         </Card>
       ) : (
         <Card>
           <CardHeader>
-            <CardTitle className="text-2xl">{t('title')}</CardTitle>
+            <CardTitle className="text-2xl">{t('auth.forgotPassword.title')}</CardTitle>
             <CardDescription>
-              {t('subtitle')}
+              {t('auth.forgotPassword.subtitle')}
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -84,16 +84,16 @@ export function ForgotPasswordForm({
                 </div>
                 {error && <p className="text-sm text-red-500">{error}</p>}
                 <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? t('sending') : t('sendButton')}
+                  {isLoading ? t('auth.forgotPassword.sending') : t('auth.forgotPassword.sendButton')}
                 </Button>
               </div>
               <div className="mt-4 text-center text-sm">
-                {t('hasAccount')}{" "}
+                {t('auth.forgotPassword.hasAccount')}{" "}
                 <Link
                   href="/auth/login"
                   className="underline underline-offset-4"
                 >
-                  {t('auth.signUp.loginLink')}
+                  {t('auth.login.loginLink')}
                 </Link>
               </div>
             </form>

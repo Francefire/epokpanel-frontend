@@ -1,12 +1,15 @@
 import {
   Card,
+  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { useTranslations } from "next-intl";
 
 export default function Page() {
+  const t = useTranslations();
   return (
     <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm">
@@ -24,6 +27,14 @@ export default function Page() {
                 confirm your account before signing in.
               </p>
             </CardContent>
+            <CardAction>
+              <a
+                href="/protected"
+                className="w-full text-center text-sm font-medium underline-offset-4 hover:underline"
+              >
+                View dashboard
+              </a>
+            </CardAction>
           </Card>
         </div>
       </div>

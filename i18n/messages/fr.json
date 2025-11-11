@@ -12,7 +12,8 @@
     "close": "Fermer",
     "confirm": "Confirmer",
     "email": "E-mail",
-    "password": "Mot de passe"
+    "password": "Mot de passe",
+    "generalError": "Une erreur est survenue."
   },
   "nav": {
     "dashboard": "Tableau de bord",
@@ -51,7 +52,8 @@
       "loggingIn": "Connexion en cours...",
       "loginButton": "Se connecter",
       "noAccount": "Vous n'avez pas de compte ?",
-      "signUpLink": "S'inscrire"
+      "signUpLink": "S'inscrire",
+      "loginLink": "Se connecter"
     },
     "signUp": {
       "title": "Inscription",
@@ -84,7 +86,12 @@
       "passwordMismatch": "Les mots de passe ne correspondent pas",
       "successMessage": "Mot de passe mis à jour avec succès !"
     },
-    "greeting": "Bonjour, {email} !"
+    "greeting": "Bonjour, {email} !",
+    "error": {
+      "title": "Erreur d'authentification",
+      "code": "Code d'erreur",
+      "unspecified": "Une erreur inconnue s'est produite. Veuillez réessayer."
+    }
   },
   "dashboard": {
     "title": "Tableau de bord",
@@ -147,7 +154,7 @@
     "sort": "Trier",
     "selected": "sélectionné",
     "selectedPlural": "sélectionnés",
-    "product" : "produit",
+    "product": "produit",
     "clearSelection": "Effacer la sélection",
     "adjustPrices": "Ajuster les prix",
     "manageTags": "Gérer les tags",
